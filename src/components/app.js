@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        Starting point
+        {this.props.children}
       </div>
     );
   }
