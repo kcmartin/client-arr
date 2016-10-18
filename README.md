@@ -1,3 +1,3 @@
 # Authentication project- Client Side
 
-Using react, redux 
+Using react, redux, cors, redux-thunk 
