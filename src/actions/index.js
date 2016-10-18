@@ -15,7 +15,7 @@ export function signinUser ({ email, password }) {
         // - update state to show user is authenticated
         dispatch({ type: AUTH_USER });
         // - save JWT token
-
+        localStorage.setItem('token', response.data.token);
         // - redirect to the route '/feature' - programmatic navigation
         browserHistory.push('/feature');
       })
