@@ -35,7 +35,7 @@ class Signin extends Component {
               <input {...password} type="password" className="form-control" />
             </fieldset>
             {this.renderAlert()}
-            <button action="submit" className="btn btn-primary">Sign in</button>
+            <button action="submit" className="btn btn-primary">Sign In</button>
           </form>
     );
   }
@@ -46,6 +46,7 @@ function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 
+// form helper: for setting up the form and fields
 export default reduxForm({
   form: 'signin',
   fields: ['email', 'password']
