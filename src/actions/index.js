@@ -41,7 +41,7 @@ export function authError(error) {
   };
 }
 
-// get rid of token and set user to unauth
+// get rid of saved token and set user to unauth
 export function signoutUser() {
   localStorage.removeItem('token');
 
