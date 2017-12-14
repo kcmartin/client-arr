@@ -7,6 +7,7 @@ class Signup extends Component {
     // pull off handleSubmit and fields
     const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
 
+    // password match validation
     return (
       <form>
         <fieldset className="form-group">
@@ -16,6 +17,7 @@ class Signup extends Component {
         <fieldset className="form-group">
           <label>Password:</label>
           <input className="form-control"  {...password} type="password" />
+          {password.touched && password.error && <div className="error">{password.error}</div>}
         </fieldset>
         <fieldset className="form-group">
           <label>Confirm Password:</label>
@@ -27,7 +29,18 @@ class Signup extends Component {
   }
 }
 
+function validate(formProps) {
+  const errors = {};
+
+  if (formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Passwords must match';
+  }
+
+  return errors;
+}
+
 export default reduxForm({
   form: 'signup',
-  fields: ['email', 'password', 'passwordConfirm']
+  fields: ['email', 'password', 'passwordConfirm'],
+  validate
 })(Signup);
