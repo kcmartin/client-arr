@@ -20,13 +20,15 @@ export function signinUser ({ email, password }) {
         dispatch({ type: AUTH_USER });
         // - save JWT token
         localStorage.setItem('token', response.data.token);
-        // - redirect to the route '/feature' - programmatic navigation
+        // - redirect user to the route '/feature'
+        // programmatic navigation, swap views
         browserHistory.push('/feature');
       })
+      // fail case
       .catch(() => {
         // if req bad:
         // - show error to user now
-        dispatch(authError('Bad Login Info'));
+        dispatch(authError('Incorrect Login'));
       });
   }
 }
