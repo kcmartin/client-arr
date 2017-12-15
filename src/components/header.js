@@ -8,8 +8,7 @@ class Header extends Component {
     if (this.props.authenticated) {
       // show a link to sign-out
       return <li className="nav-item">
-        <Link className="nav-link" to="/signout">Sign Out</Link>
-      </li>
+        <Link className="nav-link" to="/signout">Sign Out</Link></li>
     } else {
       // show link to sign in or sign up
       // returns an array of components
