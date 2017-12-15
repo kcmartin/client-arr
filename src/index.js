@@ -20,6 +20,7 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 // store for token
 const store = createStoreWithMiddleware(reducers);
 
+// get the token from localStorage
 const token = localStorage.getItem('token');
 // if we have token, user is auth'ed
 if (token) {
