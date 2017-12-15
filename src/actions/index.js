@@ -33,6 +33,21 @@ export function signinUser ({ email, password }) {
   }
 }
 
+// action creator for new user signup
+export function signupUser({ email, password }) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/signup`, { email, password })
+      .then(response => {
+        dispatch({ type: AUTH_USER });
+        localStorage.setItem('token', response.data.token);
+        browserHistory.push('/feature');
+      })
+      // fail case
+      //.catch(response => dispatch(authError(response.data.error)));
+      .catch(({response}) => dispatch(authError(response.data.error)));
+  }
+}
+
 // add separate action creator for errors
 export function authError(error) {
   return {
@@ -40,6 +55,8 @@ export function authError(error) {
     payload: error
   };
 }
+
+
 
 // get rid of saved token and set user to unauth
 export function signoutUser() {
