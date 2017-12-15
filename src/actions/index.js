@@ -42,8 +42,7 @@ export function signupUser({ email, password }) {
         localStorage.setItem('token', response.data.token);
         browserHistory.push('/feature');
       })
-      // fail case
-      //.catch(response => dispatch(authError(response.data.error)));
+      // fail case - fix error dispatch
       .catch(({response}) => dispatch(authError(response.data.error)));
   }
 }
