@@ -55,11 +55,22 @@ export function authError(error) {
   };
 }
 
-
-
 // get rid of saved token and set user to unauth
 export function signoutUser() {
   localStorage.removeItem('token');
 
   return { type: UNAUTH_USER };
+}
+
+// new action creator
+export function fetchMessage() {
+  // redux redux
+  return function(dispatch) {
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        console.log(response);
+      });
+  }
 }
